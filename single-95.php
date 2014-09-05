@@ -23,7 +23,6 @@ else
 
 .candidate-all h1 {font: 42px regular 'PT Serif', serif;}
 .candidate-all h2 {font: 30px regular 'PT Serif', serif;}
-.candidate-all p {font-size: 16px;}
 .general-info span, .portrait span {display:block; font-size: 13px; color: #9d9d9d; margin: 10px 0 12px 0;}
 .bordered, .candidate-control h2 {padding-bottom: 20px; margin-bottom: 20px; border-bottom: 1px solid #c3c3c3;}
 .candidate-web ul {list-style-type: none; padding-left: 0;}
@@ -60,7 +59,7 @@ $this_candidate_ID=get_the_ID();
 							</div>
 							<div class="row controllers">
 								<div class="col-sm-12">
-									<span>Волонтеры DreamKyiv Контроль</span>
+									<span>Волонтери DreamKyiv Контроль</span>
 										<?
 											$candidate_control = get_posts(array(
 												'numberposts' => 1,
@@ -109,22 +108,22 @@ $this_candidate_ID=get_the_ID();
 							</div>
 							<div class="row candidate-reception bordered">
 								<div class="col-sm-6">
-									<span>Приемная</span>
+									<span>Приймальня</span>
 									<p><?=get_field('deputy_office_address');?></p>
 								</div>
 								<div class="col-sm-6">
-									<span>Время приема</span>
+									<span>Приймальні години</span>
 									<p><?=get_field('deputy_office_schedule');?></p>
 								</div>
 							</div>
 							<div class="row candidate-web bordered">
 								<div class="col-sm-6">
-									<span>Соцсети</span>
+									<span>Соцмережі</span>
 									<ul>
 										<? 
 										if($fb_link=get_field('ss_links')) { echo '<li><a href="'.$fb_link.'"><img src="/img/facebook-logo.png" /></a></li>';}
 										if($vk_link=get_field('посилання_на_профілі_у_соц._мережах_VK')) { echo '<li><a href="'.$vk_link.'"><img src="/img/vk-logo.png" /></a></li>';}
-										if($vk_link=get_field('посилання_на_профілі_у_соц._мережах_YT')) { echo '<li><a href="'.$vk_link.'"><img src="/img/yt-logo.png" /></a></li>';}
+										if($yt_link=get_field('посилання_на_профілі_у_соц._мережах_YT')) { echo '<li><a href="'.$yt_link.'"><img src="/img/yt-logo.png" /></a></li>';}
 										?>
 									</ul>
 								</div>
@@ -137,7 +136,7 @@ $this_candidate_ID=get_the_ID();
 							</div>
 							<div class="row candidate-bio bordered">
 								<div class="col-sm-12">
-									<span>Краткая биография</span>
+									<span>Стисла біографія</span>
 									<p>
 									<?
 									$bio="";
@@ -151,6 +150,9 @@ $this_candidate_ID=get_the_ID();
 										$qq=preg_replace("/Членство в партії: .*/","",$qq); 
 										$bio = trim($qq);
 									}	
+									if ($q_year) echo "Рік народження: $q_year<br>";
+									if ($q_edu) echo "Освіта: $q_edu<br>";
+									if ($q_place) echo "Місце роботи: $q_place<br>";
 									echo $bio;
 									?>
 									</p>
@@ -158,7 +160,7 @@ $this_candidate_ID=get_the_ID();
 							</div>
 							<div class="row candidate-assistants bordered">
 								<div class="col-sm-12">
-									<span>Помощники</span>
+									<span>Помічники</span>
 								</div>
 								<?
 								while( have_rows('deputy_assistants') ){
@@ -184,11 +186,12 @@ $this_candidate_ID=get_the_ID();
 					</div>
 				
 					<div class="row candidate-control">
-						<div class="col-sm-6">
-							<h2>Контроль обещаний</h2>
 							<?
 							$promises=get_field('control_promisses',$candidate_control_postID);
-							if ($promises) {
+							if ($promises) { ?>
+								<div class="col-sm-6">
+									<h2>Контроль обіцянок</h2>													
+							<?php 
 								foreach( $promises as $key => $row ){
 									$column_id[ $key ] = $row['control_promise_createdate'];
 								}
@@ -201,20 +204,21 @@ $this_candidate_ID=get_the_ID();
 												<p>'.$promises[$i]['control_promise_text'].'</p>
 											</div>
 											<div class="col-sm-4">';
-											//echo "<!--";
-											//var_dump($promises[$i]);
-											//echo "-->";
-											$prom_status_text=$prom_status[$promises[$i]['control_promise_status']];
-											switch($prom_status){
+										/*	echo "<!--";
+											var_dump($promises[$i]);
+											echo "-->";*/
+											$prom_status_index=$promises[$i]['control_promise_status'];
+											$prom_status_text=$prom_status[$prom_status_index];
+											switch($prom_status_index){
 												case "0":
 													$style="declared";
-												break;
+													break;
 												case "50":
 													$style="in-process";
-												break;
+													break;
 												case "100":
 													$style="done";
-												break;
+													break;
 												default:
 													$style="";
 													
@@ -224,129 +228,84 @@ $this_candidate_ID=get_the_ID();
 										</div>';
 									$i++;	
 								}	
+							?>
+							</div>
+							<?php 
 							}
 							?>
 							
-						</div>
-						<div class="col-sm-6">
-							<h2>Голосування</h2>
+						
+						
 							<?
-							/*							
-							$votes=get_field_object('control_voting',$candidate_control_postID);
-							for($i=0;$i<count($votes);$i++){
-								//$voting=get_field_object('control_voting_decision',$votes[$i]['control_voting_decision']->ID);
-								//$votes[$i]['votedate']=$voting;
-								$votes['value'][$i]['votedate']=get_field('rada_decision_voting_date',$votes['value'][$i]['control_voting_decision']->ID);
-							}
-							foreach( $votes['value'] as $key => $row ){
-								$column_id[ $key ] = $row['votedate'];
-							}
-							array_multisort( $column_id, SORT_DESC, $votes['value'] );	
-							//echo "<!--";
-							//var_dump(count($votes['value']));
-							//echo "-->";
-							$vote_results=$votes['sub_fields'][1]['choices'];
+							if (have_rows('control_voting',$candidate_control_postID)){
+							?>
+								<div class="col-sm-6">
+								<h2>Голосування</h2>		
+							<? 
+							
 							$i=0;
-							while($i<count($votes['value']) && $i<5 ){
-								//the_row();
-								//$voting_link=get_sub_field('control_voting_decision');
-								//$voting_id=url_to_postid($voting_link);
-								$decision_post=$votes['value'][$i]['control_voting_decision'];
-								$voting_id=$decision_post->ID;
-							    // uncomment this when votings page is ready
-								// echo '<div class="row">
-								//		<div class="col-sm-10">
-								//			<p><a href="'.$voting_link.'">'.get_post_field('post_title',$voting_id).'</a></p>
-								//	</div>
-								//		<div class="col-sm-2">';
-								// 		
-								echo '<div class="row">
-										<div class="col-sm-10">
-											<p>'.$decision_post->post_title.'</p>
-										</div>
-										<div class="col-sm-2">';
-								$prom_status=$votes['value'][$i]['control_voting_vote'];
-								
-								$prom_status_text=($prom_status)?$vote_results[$prom_status]:"?";
-								switch($prom_status){
-									case "1":
-										$style="not_voted";
-									break;
-									case "2":
-										$style="none";
-									break;
-									case "3":
-										$style="yes";
-									break;
-									case "4":
-										$style="no";
-									break;
-									case "5":
-										$style="withheld";
-									break;
-									default:
-										$style="";
-										
-								}	
-							
-								echo '<p class="'.$style.'">'.$prom_status_text.'</p>';
-								echo '		</div>
-									</div>';
-									
-								$i++;	
-							}
-							*/
-							
+							$votes=[];
+							$column_id=[];
 							while(have_rows('control_voting',$candidate_control_postID)){
 								the_row();
 								$voting_link=get_sub_field('control_voting_decision');
 								$voting_id=url_to_postid($voting_link);
-								//$decision_post=get_sub_field('control_voting_decision');
-								//$voting_id=$decision_post->ID;
-							    // uncomment this when votings page is ready
-								// echo '<div class="row">
-								//		<div class="col-sm-10">
-								//			<p><a href="'.$voting_link.'">'.get_post_field('post_title',$voting_id).'</a></p>
-								//		</div>
-								//		<div class="col-sm-2">';
-								// 		
-								echo '<div class="row">
-										<div class="col-sm-10">
-											<p>'.get_post_field('post_title',$voting_id).'</p>
-										</div>
-										<div class="col-sm-2">';
-								$prom_status=get_sub_field('control_voting_vote');
-								$prom_status_text=($prom_status>0)?get_sub_field_object('control_voting_vote')['choices'][ get_sub_field('control_voting_vote') ]:"?";
-								switch($prom_status){
+								$votes[$i]=get_fields($voting_id);
+								$votes[$i]['title']=get_post_field('post_title',$voting_id);
+								$votes[$i]['link']=$voting_link;
+								
+								$vote_index=get_sub_field('control_voting_vote');
+								$vote_text=($vote_index>0)?get_sub_field_object('control_voting_vote')['choices'][$vote_index]:"?";
+								switch($vote_index){
 									case "1":
 										$style="not_voted";
-									break;
+										break;
 									case "2":
 										$style="none";
-									break;
+										break;
 									case "3":
 										$style="yes";
-									break;
+										break;
 									case "4":
 										$style="no";
-									break;
+										break;
 									case "5":
 										$style="withheld";
-									break;
+										break;
 									default:
 										$style="";
-										
-								}	
-								echo '<p class="'.$style.'">'.$prom_status_text.'</p>';
-								echo '		</div>
-									</div>';
-							}		
+								
+								}
+								$votes[$i]['vote_text']=$vote_text;
+								$votes[$i]['vote_css_style']=$style;
+								$column_id[$i]=$votes[$i]["rada_decision_voting_date"];
+
+								
+								$i++;
+								
+							}
+							array_multisort( $column_id, SORT_DESC, $votes);
+							for ($i=0;$i<5;$i++){
 							?>
-							
-						</div>
+										<div class="row">
+											<div class="col-sm-10">
+												<p><?=$votes[$i]['title']?></p>
+											</div>
+											<div class="col-sm-2">	
+												<p class="<?=$votes[$i]['vote_css_style']?>"><?=$votes[$i]['vote_text']?></p>
+											</div>
+										</div>
+							<?			
+							}
+							?>							
+							</div>
+							<? } ?>
 					</div>
 					
 					<div class="row articles">
+						<?
+						if (have_rows('deputy_news')) {
+						?>
 						<div class="col-sm-8">
 							<h2>Новини депутата</h2>
 							<?
@@ -354,13 +313,17 @@ $this_candidate_ID=get_the_ID();
 									the_row();
 									echo '<p><a href="'.get_sub_field('deputy_news_link').'" target="_blank">'.get_sub_field('deputy_news_alt_text').'</a></p>';
 								}
-							?>
-						<h2>Кандидат в СМИ</h2>
+						}	
+						
+						if (have_rows('посилання') ){
+						?>
+						<h2>Кандидат у ЗМІ</h2>
 							<?
 								while( have_rows('посилання') ){
 									the_row();
 									echo '<p><a href="'.get_sub_field('link').'" target="_blank">'.get_sub_field('alt_text').'</a></p>';
 								}
+						}
 							?>
 						</div>
 						<? if ($fb_link) {
@@ -378,7 +341,10 @@ $this_candidate_ID=get_the_ID();
 							<div class="quote">
                                 <div class="fb-like-box" data-href="<?=$fb_link?>" data-colorscheme="light" data-show-faces="true" data-header="true" data-stream="true" data-show-border="true"></div>
 							</div>
-                        <? } ?>
+                        <? } 
+                        
+                        if (have_rows('листівки')){
+                        ?>
 							<h2>Передвиборча агітація</h2>
 							<div class="row">
 							<?  
@@ -388,8 +354,13 @@ $this_candidate_ID=get_the_ID();
 									<a href="'.get_sub_field('листовка').'" rel="lightbox"><img src="'.get_sub_field('листовка').'" width="150"  alt=""  /></a>
 								</div>';
 							}
+							
+							
 							?>														
 							</div>
+						<? 
+						} 
+						?>	
 						</div>
 					</div>
 					
