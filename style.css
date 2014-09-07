@@ -2,7 +2,7 @@
 Theme Name:       Київ мрії
 Theme URI:
 Template:      shoestrap-3
-Version:          0.1.2
+Version:          0.1.3
 Description:      Dream Kyiv main theme
 Tags:               dark, light, one-column, two-columns, left-sidebar, right-sidebar, fluid-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, microformats, rtl-language-support, holiday, seasonal
 GitHub Theme URI: https://github.com/DreamKyiv/dreamkyiv
@@ -311,7 +311,7 @@ padding-top: 30px;
 .facebook-logo {
     position: absolute;
     right: 16px;
-    top: 40px;
+    top: 75px;
 }
 .facebook-logo a {
     display: block;
@@ -1018,3 +1018,104 @@ div.news-item a{
 	position: relative;
 	top: 16px;	
 }
+
+blockquote span.name {
+  display: block;
+  position: absolute;
+  left: 80px;
+  top: -55px;
+  font: 20px "PT Serif", "Times New Roman", Georgia, Serif;
+  color: #000;
+}
+
+blockquote img.avatar{
+	position: absolute;
+	left: 0;
+	top: -75px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+}
+
+blockquote span.date {
+  display: block;
+  color: #9f9f9f;
+  font-size: 12px;
+}
+
+blockquote {
+  position: relative;
+  padding: 15px;
+  font-size: 14px;
+  line-height: 21px;
+  color: #2f6695;
+  border: 2px solid #2f6695;
+}
+
+blockquote:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+blockquote:after {
+  content: ' ';
+  left: 75px;
+  top: -17px;
+  border: 10px solid;
+  border-color: transparent transparent #fff #fff;
+}
+
+blockquote:before, blockquote:after {
+  content: ' ';
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+
+.pre-nav {
+	width:1130px;
+}
+.tmenu {
+	float:left;
+	list-style-type: none;
+	padding: 0 20px 10px 0;
+	font-family: "PT Serif", "Times New Roman", Georgia, Serif;
+	border-bottom: 1px solid #5d5d5d;
+	margin-left: 6%;
+	margin-top: 20px;
+	margin-right: 6%;
+	width: 100%;
+}
+
+ul.tmenu li {
+	display: inline-block;
+	margin-right: 25px;
+}
+
+ul.tmenu li a {
+	color: #5d5d5d!important;
+}
+
+.top-donate {
+	float:right;
+	list-style-type: none;
+	padding: 0 0 10px 0;
+	font-family: "PT Serif", "Times New Roman", Georgia, Serif;
+	margin-top: -22px;
+}
+
+ul.top-donate li {
+	display: inline-block;
+	margin-right:-50px;
+}
+
+ul.top-donate a {
+	font-family: "PT Serif", "Times New Roman", Georgia, Serif;
+	color: #fff;
+	background-color: #73a933;
+	display: inline-block;
+	border: 2px solid #d5e5c2;
+	padding: 5px 10px;

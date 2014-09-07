@@ -878,7 +878,7 @@ function news_custom_footer() {
 ?>
     <span class="date"><i class="el-icon-calendar icon"></i>
     <?php echo get_the_date('j F Y') ?>
-    </span>
+   </span>
 <?php    
 }
 
@@ -1471,3 +1471,15 @@ remove_action( 'wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
 
 //End post views counter
 
+
+function pre_navbar_header() {
+   $html ='';
+
+   $html .='<div class="pre-nav">';
+   $html .='<ul class="tmenu"><li><a href="/">Головна</a></li><li><a href="http://dreamkyiv.com/about/">Про проект</a></li><li><a href="http://dreamkyiv.com/kontakty/">Контакти</a></li></ul>';
+   $html .='<div class="top-donate"><ul class="top-donate"><li><a href="https://dreamkyiv.payplug.in/">Допомогти проекту!</a></li></ul></div>';
+   $html .='</div>';
+
+   echo $html;
+}
+add_action( 'shoestrap_pre_top_bar', 'pre_navbar_header' );

@@ -11,7 +11,7 @@ else
 
  <div class="row bigrow">
   <div class="col-sm-12">
-<?php echo do_shortcode( "[SlideDeck2 id=19542]" ); ?>  </div>
+<?php echo do_shortcode( "[SlideDeck2 id=19542 ress=1]" ); ?>  </div>
  </div> 
 
 <div class="row bigrow">
@@ -153,8 +153,8 @@ else
       	<h2 class="text-center">Партнери</h2>
       	
 <div class="row bigrow">
-	<div class="col-sm-3"><a href="http://chasopys.ua" class="bordered"> <img src="/img/chasopys_logo.png"></a></div>
-	<div class="col-sm-3"> </div>
-	<div class="col-sm-3"> </div>
+	<div class="col-sm-3"><a href="http://chasopys.ua" class="bordered" target="_blank"> <img src="/img/chasopys_logo.png"></a></div>
+	<div class="col-sm-3"><a href="http://interesniy.kiev.ua" class="bordered" target="_blank"> <img src="/img/interesniy.jpg"></a> </div>
+	<div class="col-sm-3"><a href="http://ua.boell.org" class="bordered" target="_blank"> <img src="/img/boll.jpg"></a> </div>
 	<div class="col-sm-3"> </div>
 </div>
