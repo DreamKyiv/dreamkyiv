@@ -34,3 +34,17 @@ function shoestrap_child_options( $sections ) {
 	return $sections;
 }
 endif;
+
+$fields[] = array(
+
+'title' => __( 'Recompile LESS', 'shoestrap_child' ),
+
+'desc' => 'Check if child LESS has changed and recompile if necessary.',
+
+'id' => 'always_compile_less',
+
+'default' => 0,
+
+'type' => 'switch'
+
+);
