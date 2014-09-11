@@ -1483,3 +1483,41 @@ function pre_navbar_header() {
    echo $html;
 }
 add_action( 'shoestrap_pre_top_bar', 'pre_navbar_header' );
+
+/**
+
+* Check if child LESS has changed and recompile if necessary.
+
+*/
+
+function always_compile_less () {
+
+
+ // Check if the Compile LESS option is turned on
+
+if ( shoestrap_getvariable( 'always_compile_less' ) == 1 ) {
+
+
+ // Render if either the timestamp file doesn't exist, or the modified time of the less file is greater than the timestamp
+
+if ( !file_exists(get_stylesheet_directory() . '/assets/less/last_rendered') || ( filemtime(get_stylesheet_directory() . '/assets/less/child.less') > file_get_contents(get_stylesheet_directory() . '/assets/less/last_rendered') ) ) {
+
+
+ // Render
+
+shoestrap_makecss();
+
+
+ // Dump the less file's modified time into the timestamp
+
+file_put_contents(get_stylesheet_directory() . '/assets/less/last_rendered', filemtime(get_stylesheet_directory() . '/assets/less/child.less'));
+
+
+ }
+
+
+ }
+
+}
+
+add_action( 'wp', 'always_compile_less' );
