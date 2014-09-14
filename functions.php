@@ -1236,7 +1236,7 @@ function kandidat_for_deputy_control_object_query( $args, $field, $post )
     if( $kandydat ) {
         $kandydat_id = url_to_postid(  $kandydat );
         if( $kandydat_id ) {
-//            $args['post_id'] = $kandydat_id;
+            $args['p'] = $kandydat_id;
         }
     } else {
         // select all winners
@@ -1258,25 +1258,14 @@ function kandidat_for_deputy_control_object_query( $args, $field, $post )
        $args['post_status'] = array( 'publish' ); // show only published objects
     }
 
+    $args['post_type'] = 'kandidat';
+
     // modify the order
     $args['orderby'] = 'title';
  
     return $args;
 }
 add_filter('acf/fields/post_object/query/name=control_deputy_reference', 'kandidat_for_deputy_control_object_query', 10, 3);
-
-function kandidat_for_deputy_control_object_result( $result, $object, $field )
-{
-
-/*
-    if( $object ) {
-        $result = $object->post_title . ' (' . mb_strtolower( get_field( 'balatuetsya', $object->ID ) ) . ')';
-    }
-*/
-
-    return $result;
-}
-add_filter('acf/fields/post_object/result/name=control_deputy_reference', 'kandidat_for_deputy_control_object_result', 10, 3);
 
 function control_acf_field_admin_head()
 {

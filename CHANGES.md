@@ -1,5 +1,9 @@
 ### ChangeLog for DreamKyiv main theme
 
+#### 0.1.11
+
+* optimization for less memory usage
+
 #### 0.1.10
 
 * unused functions are removed from functions.php (as we use PeopleControl plugin now)
