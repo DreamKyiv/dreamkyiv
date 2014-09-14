@@ -1331,102 +1331,13 @@ add_action('acf/input/admin_head', 'control_acf_field_admin_head');
 
 
 function control_create_field( $args ) {
-//error_log( $args['_name'] );
     if( $args['_name'] == 'control_deputy_reference' )  {
         if( $args['value'] ) {
             echo "<input name='fields[" .$args['key']. "]' type=hidden value='" .$args['value']. "'>";
         }
-    } elseif( $args['_name'] == 'control_voting' ) {
-//        error_log(  print_r( $args['value'],1 )  );
-    } elseif( !$args['_name'] ) {
-        if( $args['type'] == 'tab' && $args['label'] == 'Голосування' ) {
-//        echo "<div>XXXXXXX</div>";
-//        error_log(  print_r( $args,1 )  );
-        }
     }
 }
 add_action( 'acf/create_field', 'control_create_field', 10, 1 );
-
-
-function save_rada_decision( $post_id ) {
-    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
-
-    if ( $_POST['post_type'] != 'rada_decision' ) {
-        return;
-    }
-    
-    if ( $_POST['post_status'] != 'publish' ) {
-        return;
-    }
-        
-    $original_post_id = $_POST['ID'];
-    if( $post_id != $original_post_id ) {
-        return;
-    }
-
-    // link rada decision to deputi_controls
-    $query = new WP_Query(
-        array(
-            'post_type' => 'deputy_control',
-            'post_status' => 'publish',
-            'meta_query' => array(
-                array(
-                 'key' => 'control_voting_%_control_voting_decision',
-                 'compare' => '=',
-                 'value' => $original_post_id
-                )
-            )
-        )
-    );
-
-    $ignored = array();
-    if ( $query->have_posts() ) {
-        $controls = $query->get_posts();
-        foreach( $controls as $c ) {
-            $ignored[] = $c->ID;
-        }
-    }
-
-        $query = new WP_Query(
-            array(
-                'post_type' => 'deputy_control',
-                'post_status' => 'publish',
-                'post__not_in' => $ignored
-            )
-        );
-
-        if ( $query->have_posts() ) {
-            $controls = $query->get_posts();
-            foreach( $controls as $c ) {
-                // should be added here
-                $value = get_field('control_voting', $c->ID);
-                $add = true;
-                $targets = array();
-                for( $i=0; $i < count($value) ; $i++ ) {
-                    $decision_id = url_to_postid( $value[$i]['control_voting_decision'] );
-                    if( $decision_id ) {
-                        if( $decision_id == $original_post_id ) {
-                            $add = false; // already exists
-                        } else {
-                            $targets[] = array(
-                                'control_voting_decision' => $decision_id,
-                                'control_voting_vote' => $value[$i]['control_voting_vote']
-                           );
-                        }
-                    }
-                }
-
-                if( $add ) {
-                    $targets[] = array(
-                         'control_voting_decision' => $original_post_id,
-                         'control_voting_vote' => NULL
-                    );
-                    update_field( 'control_voting', $targets, $c->ID );
-                }
-            }
-        }
-}
-add_action( 'save_post', 'save_rada_decision' );
 
 
 function my_posts_where( $where )
