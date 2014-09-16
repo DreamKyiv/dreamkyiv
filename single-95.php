@@ -158,6 +158,24 @@ $this_candidate_ID=get_the_ID();
 									</p>
 								</div>
 							</div>
+                            <? if(have_rows('перші_шаги')){  ?>
+                                <div class="row candidate-bio bordered">
+                                    <div class="col-sm-12">
+                                        <span>Перші кроки</span>
+                                        <?
+                                            while( have_rows('перші_шаги') ){
+                                                the_row();
+                                                echo "<p>";
+                                                the_sub_field('крок1');
+                                                echo "</p>\n";
+                                            }
+                                        ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            <? } ?>
+
 							<div class="row candidate-assistants bordered">
 								<div class="col-sm-12">
 									<span>Помічники</span>
@@ -198,7 +216,7 @@ $this_candidate_ID=get_the_ID();
 								array_multisort( $column_id, SORT_DESC, $promises );						
 								$prom_status=get_field_object('control_promisses',$candidate_control_postID)['sub_fields'][2]['choices'];
 								$i=0;
-								while($i<count($promises) && $i<5 ){							
+								while($i<count($promises) /*&& $i<5 */ ){
 									echo '<div class="row">
 											<div class="col-sm-8">
 												<p>'.$promises[$i]['control_promise_text'].'</p>
@@ -284,11 +302,15 @@ $this_candidate_ID=get_the_ID();
 								$i++;
 								
 							}
-							array_multisort( $column_id, SORT_DESC, $votes);
-							for ($i=0;$i<5;$i++){
+                            array_multisort( $column_id, SORT_DESC, $votes);
+							for ($i=0;$i<10;$i++){
+
 							?>
 										<div class="row">
-											<div class="col-sm-10">
+                                            <div class="col-sm-2">
+                                                <p><?=date("d.m.Y", strtotime($votes[$i]["rada_decision_voting_date"]))?></p>
+                                            </div>
+											<div class="col-sm-8">
 												<p><?=$votes[$i]['title']?></p>
 											</div>
 											<div class="col-sm-2">	
@@ -326,7 +348,7 @@ $this_candidate_ID=get_the_ID();
 						}
 							?>
 						</div>
-						<? if ($fb_link) {
+						<? if (false) { //temporarily disabled - does not work
                         ?>
                         <div id="fb-root"></div>
                         <script>(function(d, s, id) {
