@@ -1,5 +1,9 @@
 ### ChangeLog for DreamKyiv main theme
 
+#### 0.1.11.2
+
+* pre-nav width fixed in style.css
+
 #### 0.1.11
 
 * optimization for less memory usage
