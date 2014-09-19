@@ -1,5 +1,11 @@
 ### ChangeLog for DreamKyiv main theme
 
+#### 0.1.11.6
+* fixed contact form width and top-margin on contacts page
+
+#### 0.1.11.5
+* fixed banner-header top margin
+
 #### 0.1.11.2
 
 * pre-nav width fixed in style.css
