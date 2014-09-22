@@ -515,13 +515,13 @@ add_action( 'init', 'add_polling_station', 0 );
 function add_rada_decision() {
 
 	$labels = array(
-		'name'                => 'Рішення КМДА',
-		'singular_name'       => 'Рішення КМДА',
-		'menu_name'           => 'Рішення КМДА',
+		'name'                => 'Рішення Київради',
+		'singular_name'       => 'Рішення Київради',
+		'menu_name'           => 'Рішення Київради',
 		'parent_item_colon'   => __( 'Parent Item:', 'dreamk' ),
-		'all_items'           => 'Всi рішення КМДА',
+		'all_items'           => 'Всi рішення Київради',
 		'view_item'           => __( 'Проглянути', 'dreamk' ),
-		'add_new_item'        => __( 'Додати рішення КМДА', 'dreamk' ),
+		'add_new_item'        => __( 'Додати рішення Київради', 'dreamk' ),
 		'add_new'             => __( 'Додати', 'dreamk' ),
 		'edit_item'           => __( 'Редагувати', 'dreamk' ),
 		'update_item'         => __( 'Оновити', 'dreamk' ),
@@ -532,7 +532,7 @@ function add_rada_decision() {
 
 	$args = array(
 		'label'               => __( 'rada_decision', 'dreamk' ),
-		'description'         => __( 'Рішення КМДА', 'dreamk' ),
+		'description'         => __( 'Рішення Київради', 'dreamk' ),
 		'labels'              => $labels,
 		'supports'            => array( 'title', 'editor', 'excerpt', 'author', 'thumbnail', 'comments', 'revisions', 'custom-fields', 'page-attributes', 'post-formats', ),
 		'taxonomies'          => array( 'category', 'post_tag' ),

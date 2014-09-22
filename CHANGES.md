@@ -1,5 +1,8 @@
 ### ChangeLog for DreamKyiv main theme
 
+#### 0.1.11.8
+* "КМДА" has renamed into "Київрада" ;-)
+
 #### 0.1.11.6
 * fixed contact form width and top-margin on contacts page
 
