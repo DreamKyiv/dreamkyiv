@@ -1089,9 +1089,7 @@ blockquote:before, blockquote:after {
 	padding: 0 20px 10px 0;
 	font-family: "PT Serif", "Times New Roman", Georgia, Serif;
 	border-bottom: 1px solid #5d5d5d;
-	margin-left: 6%;
 	margin-top: 20px;
-	margin-right: 6%;
 	width: 100%;
 }
 
@@ -1110,6 +1108,7 @@ ul.tmenu li a {
 	padding: 0 0 10px 0;
 	font-family: "PT Serif", "Times New Roman", Georgia, Serif;
 	margin-top: -22px;
+	margin-right:25px;
 }
 
 ul.top-donate li {
