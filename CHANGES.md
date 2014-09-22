@@ -1,6 +1,6 @@
 ### ChangeLog for DreamKyiv main theme
 
-#### 0.1.11.8
+#### 0.1.11.9
 * "КМДА" has renamed into "Київрада" ;-)
 
 #### 0.1.11.6
