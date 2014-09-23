@@ -23,6 +23,8 @@ global $ss_framework; ?>
   </div>
 
 </div> 
+<h1 class="mainpage">Новини</h1>
+
 <?php echo '<article '; post_class(); echo '>';
 
 	do_action( 'shoestrap_in_article_top' );
