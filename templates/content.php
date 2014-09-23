@@ -1,6 +1,6 @@
 <?php
 
-global $ss_framework; ?>
+global $ss_framework; 
 <div class="row bigrow">
   <div class="col-sm-12 news-preview">
     <?php 
@@ -25,7 +25,7 @@ global $ss_framework; ?>
 </div> 
 <div class="row bigrow">
 
-<?php echo '<article '; post_class(); echo '>';
+echo '<article '; post_class(); echo '>';
 
 	do_action( 'shoestrap_in_article_top' );
 	shoestrap_title_section( true, 'h3', true );
