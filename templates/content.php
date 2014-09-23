@@ -23,6 +23,7 @@ global $ss_framework; ?>
   </div>
 
 </div> 
+<div class="row bigrow">
 <h1 class="mainpage">Новини</h1>
 
 <?php echo '<article '; post_class(); echo '>';
@@ -52,3 +53,4 @@ global $ss_framework; ?>
 	do_action( 'shoestrap_in_article_bottom' );
 
 echo '</article>';
+</div>
