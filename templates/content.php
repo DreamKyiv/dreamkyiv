@@ -24,7 +24,6 @@ global $ss_framework; ?>
 
 </div> 
 <div class="row bigrow">
-<h1 class="mainpage">Новини</h1>
 
 <?php echo '<article '; post_class(); echo '>';
 
