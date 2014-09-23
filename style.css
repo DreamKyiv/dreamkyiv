@@ -1018,6 +1018,7 @@ div.news-item a{
 }
 
 .p-views {
+	display:none;
 	position: relative;
 	top: 16px;	
 }
