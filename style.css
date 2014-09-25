@@ -2,7 +2,7 @@
 Theme Name:       Київ мрії
 Theme URI:
 Template:      shoestrap-3
-Version:          0.1.13.8
+Version:          0.1.13.9
 Description:      Dream Kyiv main theme
 Tags:               dark, light, one-column, two-columns, left-sidebar, right-sidebar, fluid-layout, custom-background, custom-colors, custom-header, custom-menu, editor-style, microformats, rtl-language-support, holiday, seasonal
 GitHub Theme URI: https://github.com/DreamKyiv/dreamkyiv
@@ -311,7 +311,7 @@ nav.pagination li a i{
 .facebook-logo {
     position: absolute;
     right: 16px;
-    top: 40px;
+    top: 10px;
 }
 .facebook-logo a {
     display: block;
