@@ -259,62 +259,33 @@ $this_candidate_ID=get_the_ID();
 							?>
 								<div class="col-sm-6">
 								<h2>Голосування</h2>		
-							<? 
-							
-							$i=0;
-							$votes=[];
-							$column_id=[];
-							while(have_rows('control_voting',$candidate_control_postID)){
-								the_row();
-								$voting_link=get_sub_field('control_voting_decision');
-								$voting_id=url_to_postid($voting_link);
-								$votes[$i]=get_fields($voting_id);
-								$votes[$i]['title']=get_post_field('post_title',$voting_id);
-								$votes[$i]['link']=$voting_link;
-								
-								$vote_index=get_sub_field('control_voting_vote');
-								$vote_text=($vote_index>0)?get_sub_field_object('control_voting_vote')['choices'][$vote_index]:"?";
-								switch($vote_index){
-									case "1":
-										$style="not_voted";
-										break;
-									case "2":
-										$style="none";
-										break;
-									case "3":
-										$style="yes";
-										break;
-									case "4":
-										$style="no";
-										break;
-									case "5":
-										$style="withheld";
-										break;
-									default:
-										$style="";
-								
-								}
-								$votes[$i]['vote_text']=$vote_text;
-								$votes[$i]['vote_css_style']=$style;
-								$column_id[$i]=$votes[$i]["rada_decision_voting_date"];
+							<?
+                            $vote_options = array(
+                                1 => ['text' => 'Не голосував', 'class'=>'not_voted'],
+                                2 => ['text' => 'Відсутній', 'class'=>'none'],
+                                3 => ['text' => 'За', 'class'=>'yes'],
+                                4 => ['text' => 'Утримався', 'class'=>'withheld'],
+                                5 => ['text' => 'Проти', 'class'=>'no']
+                            );
 
-								
-								$i++;
-								
-							}
-                            array_multisort( $column_id, SORT_DESC, $votes);
-							for ($i=0;$i<10;$i++){
+                            error_reporting(255);
+                            ini_set("display_errors",1);
+                            $votes=DreamKyivPeopleControlDb::get_last_votings( get_the_ID());
+                           //var_dump($votes);
+                           // var_dump('ss');
 
+
+							for ($i=0;$i<count($votes);$i++){
 							?>
 										<div class="row">
                                             <div class="col-sm-2">
-                                                <p><?=date("d.m.Y", strtotime($votes[$i]["rada_decision_voting_date"]))?></p>
+                                                <p><?=date("d.m.Y", strtotime($votes[$i]->voting_date))?></p>
                                             </div>
 											<div class="col-sm-8">
-												<p><?=$votes[$i]['title']?></p>
+												<p><?=get_the_title($votes[$i]->decision_post_id)?></p>
 											</div>
 											<div class="col-sm-2">	
-												<p class="<?=$votes[$i]['vote_css_style']?>"><?=$votes[$i]['vote_text']?></p>
+												<p class="<?=$vote_options[$votes[$i]->vote]['class']?>"><?=$vote_options[$votes[$i]->vote]['text']?></p>
 											</div>
 										</div>
 							<?			
