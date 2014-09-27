@@ -29,3 +29,4 @@ echo '<article '; post_class(); echo '>';
 	do_action( 'shoestrap_in_article_bottom' );
 
 echo '</article>';
+?>

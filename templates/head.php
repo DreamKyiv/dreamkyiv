@@ -25,6 +25,7 @@
 	</style>
     <?php if ( !is_user_logged_in() ){ ?>
     <style>
+    @import "mobile.css" handheld;
     #wpadminbar{ display:none; }
     </style>
     <?php } ?>
