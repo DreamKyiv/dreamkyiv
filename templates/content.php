@@ -16,7 +16,7 @@ echo '<article '; post_class(); echo '>';
         if ( get_query_var('post_type') == 'social' ) {
             echo '<div class="entry-summary">';
             	    $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'thumbnail') );
-		    <img src="<?php echo $url ?>" class="mainpage" />
+		    echo '<img src="' echo $url echo '" class="mainpage" />'
                     echo get_post_meta(get_the_ID(), 'zmist_korotko',true);
                     echo $ss_framework->clearfix();
             echo '</div>';
