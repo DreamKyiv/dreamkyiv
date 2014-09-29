@@ -15,9 +15,9 @@ echo '<article '; post_class(); echo '>';
 
         if ( get_query_var('post_type') == 'social' ) {
             echo '<div class="entry-summary">';
-		    echo '<img src="' 
-		    echo wp_get_attachment_url( get_post_thumbnail_id(get_the_ID(), 'thumbnail') ) 
-		    echo '" class="mainpage" />'
+		    echo '<img src="'; 
+		    echo wp_get_attachment_url( get_post_thumbnail_id(get_the_ID(), 'thumbnail') ); 
+		    echo '" class="mainpage" />';
                     echo get_post_meta(get_the_ID(), 'zmist_korotko',true);
                     echo $ss_framework->clearfix();
             echo '</div>';
