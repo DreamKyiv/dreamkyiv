@@ -255,7 +255,8 @@ $this_candidate_ID=get_the_ID();
 						
 						
 							<?
-							if (have_rows('control_voting',$candidate_control_postID)){
+                            				$votes=DreamKyivPeopleControlDb::get_last_votings( get_the_ID());					
+							if (count($votes)>0){
 							?>
 								<div class="col-sm-6">
 								<h2>Голосування</h2>		
@@ -268,9 +269,6 @@ $this_candidate_ID=get_the_ID();
                                 5 => ['text' => 'Проти', 'class'=>'no']
                             );
 
-                            error_reporting(255);
-                            ini_set("display_errors",1);
-                            $votes=DreamKyivPeopleControlDb::get_last_votings( get_the_ID());
                            //var_dump($votes);
                            // var_dump('ss');
 
