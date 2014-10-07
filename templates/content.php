@@ -36,5 +36,6 @@ global $ss_framework;
 
 	echo '</article>';
         echo '</div>';
+        echo $ss_framework->clearfix();
 
 ?>
