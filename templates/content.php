@@ -1,11 +1,14 @@
 <?php
-
 global $ss_framework;
-
-echo '<article '; post_class(); echo '>';
+	echo '<div class="col-sm-3 news-item entry-summary">';
+	echo '<article '; post_class(); echo '>';
 
 	do_action( 'shoestrap_in_article_top' );
 	shoestrap_title_section( true, 'h3', true );
+
+		    echo '<img src="'; 
+		    echo wp_get_attachment_url( get_post_thumbnail_id(get_the_ID(), 'thumbnail') ); 
+		    echo '" class="mainpage" />';
 
 	if ( has_action( 'shoestrap_entry_meta_override' ) ) {
 		do_action( 'shoestrap_entry_meta_override' );
@@ -31,5 +34,7 @@ echo '<article '; post_class(); echo '>';
 
 	do_action( 'shoestrap_in_article_bottom' );
 
-echo '</article>';
+	echo '</article>';
+        echo '</div>';
+
 ?>
