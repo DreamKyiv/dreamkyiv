@@ -41,14 +41,6 @@ ul.places li a img {vertical-align: middle; vertical-align: -webkit-baseline-mid
 	<div class="col-md-1">
 		<img class="form-logo" src="/img/zakogo_logo_small.png" />
 	</div>
-	<div class="col-md-11">
-		<h1 class="candidate-heading">Результати виборів</h1>
-		
-</h3>
-	</div>
-</div>
-
-<div class="row">
 	<div class="col-md-12 text-center">
 		<h2>Мер Києва</h2>
 	</div>
