@@ -41,7 +41,7 @@ ul.places li a img {vertical-align: middle; vertical-align: -webkit-baseline-mid
 	<div class="col-md-1">
 		<img class="form-logo" src="/img/zakogo_logo_small.png" />
 	</div>
-	<div class="col-md-12 text-center">
+	<div class="col-md-11 text-center">
 		<h2>Мер Києва</h2>
 	</div>
 </div>
