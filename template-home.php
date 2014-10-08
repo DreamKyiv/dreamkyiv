@@ -44,7 +44,7 @@ else
 
 <div class="row bigrow">
     <div class="col-sm-8 face-preview">
-        <h2 class="text-center">Київ мрії</h2>
+        <h2 class="text-center"><a href="http://dreamkyiv.com/category/dream-kyiv/">Київ мрії</a></h2>
 <?php 
         $args = array(
           'posts_per_page' =>2, 
@@ -75,7 +75,7 @@ else
           wp_reset_query();
       ?> 
 
- <h2 class="text-center">Життя</h2>
+ <h2 class="text-center"><a href="http://dreamkyiv.com/category/zhyttya/">Життя</a></h2>
 <?php 
         $args = array(
           'posts_per_page' =>2, 
