@@ -28,6 +28,13 @@ while ( have_posts() ) : the_post();
                 }
                 echo '</div>';
                 
+                do_action( 'shoestrap_entry_meta' );
+			shoestrap_meta( 'tags' );
+			wp_link_pages( array(
+				'before' => '<nav class="page-nav"><p>' . __('Pages:', 'shoestrap'),
+				'after'  => '</p></nav>'
+			) );
+			
                 $post_subtitle = esc_html(get_post_meta($post->ID,'post_subtitle',true));
                 if ( $post_subtitle):
                     echo '<div class="entry-subtitle">';
@@ -53,12 +60,7 @@ while ( have_posts() ) : the_post();
 		echo '</div>';
 		
 		echo '<footer>';
-			do_action( 'shoestrap_entry_meta' );
-			shoestrap_meta( 'tags' );
-			wp_link_pages( array(
-				'before' => '<nav class="page-nav"><p>' . __('Pages:', 'shoestrap'),
-				'after'  => '</p></nav>'
-			) );
+			
 		echo '</footer>';
 		
 		lm_relative_posts_by_cats();
