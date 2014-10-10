@@ -25,7 +25,7 @@ div.row.row-meta {display:none;}
 				<img class="img-responsive form-logo" src="/img/zakogo_logo.png" />
 			</div>
 			<div class="col-sm-10">
-				<h2 class="form-heading">За кого я можу голосувати?</h2>
+				<h2 class="form-heading">Хто мій депутат у Київраді?</h2>
 				<form role="form" class="form-horizontal">
 					<div class="form-group">
 						<div class="col-sm-10">
@@ -37,7 +37,7 @@ div.row.row-meta {display:none;}
 		</div>
 		<div class="row">
 			<div class="col-sm-11" style="padding-top:20px;">
-				<p> За допомогою цієї сторінки ви зможете дізнатись, хто з кандидатів балотується за вашим округом і хоче представляти ваші інтереси в Київраді, а також адресу вашої виборчої дільниці.</p>
+				<p> За допомогою цієї сторінки ви зможете дізнатись, хто з депутатів представляє Ваші інтереси в Київраді, знайти його контактні данні, та детальну інформацію про його діяльність.</p>
 			</div>
 		</div>
 		<div class="row">
