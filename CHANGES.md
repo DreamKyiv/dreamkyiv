@@ -1,5 +1,8 @@
 ### ChangeLog for DreamKyiv main theme
 
+#### 0.1.14.7
+* Search page is changed - now we look for my deputy
+
 #### 0.1.11.9
 * "КМДА" has renamed into "Київрада" ;-)
 
