@@ -8,11 +8,11 @@ if ( !has_action( 'shoestrap_page_header_override' ) )
 else
   do_action( 'shoestrap_page_header_override' );
 
-if ( !has_action( 'shoestrap_content_page_override' ) )
+/*if ( !has_action( 'shoestrap_content_page_override' ) )
   get_template_part('templates/faces');
 else
   do_action( 'shoestrap_content_page_override' );
-  
+  */
   
   
   
@@ -204,11 +204,12 @@ $this_candidate_ID=get_the_ID();
 					</div>
 				
 					<div class="row candidate-control">
+                        <div class="col-sm-6">
+                            <h2>Контроль обіцянок</h2>
 							<?
 							$promises=get_field('control_promisses',$candidate_control_postID);
 							if ($promises) { ?>
-								<div class="col-sm-6">
-									<h2>Контроль обіцянок</h2>													
+
 							<?php 
 								foreach( $promises as $key => $row ){
 									$column_id[ $key ] = $row['control_promise_createdate'];
@@ -247,19 +248,22 @@ $this_candidate_ID=get_the_ID();
 									$i++;	
 								}	
 							?>
-							</div>
+
 							<?php 
 							}
+                            else {
+                                echo 'Розділ наповнюється';
+                            }
 							?>
-							
-						
+                        </div>
+                        <div class="col-sm-6">
+                            <h2>Голосування</h2>
 						
 							<?
                             				$votes=DreamKyivPeopleControlDb::get_last_votings( get_the_ID());					
 							if (count($votes)>0){
 							?>
-								<div class="col-sm-6">
-								<h2>Голосування</h2>		
+
 							<?
                             $vote_options = array(
                                 1 => ['text' => 'Не голосував', 'class'=>'not_voted'],
@@ -289,8 +293,13 @@ $this_candidate_ID=get_the_ID();
 							<?			
 							}
 							?>							
-							</div>
-							<? } ?>
+
+							<? }
+                            else {
+                                echo "Розділ наповнюється";
+                            }
+                            ?>
+                        </div>
 					</div>
 					
 					<div class="row articles">
