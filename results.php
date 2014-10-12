@@ -112,21 +112,6 @@ ul.places li a img {vertical-align: middle; vertical-align: -webkit-baseline-mid
 
 </div> 
 
-<!--div class="row">
-	<div class="col-md-11 text-center">
-		<h2>Мер Києва</h2>
-	</div>
-</div>
-
-<div class="row mayor">
-	<div class="col-xs-2 col-xs-offset-3">
-		<img src="http://dreamkyiv.com/wp-content/uploads/2014/05/Vitali_Klitschko_2014-02-01.jpg" class="img-responsive" />
-	</div>
-	<div class="col-xs-7">
-		<h3><a href="http://dreamkyiv.com/kandidat/mer-klychko-vitalij-volodymyrovych-2/">Кличко Віталій Володимирович (<?=get_field('procent',1052)?>%)</a></h3>
-		<p><a href="http://dreamkyiv.com/party/udar/">УДАР</a></p>
-	</div>
-</div-->
 
 <script>
 jQuery(document).ready(function(){
@@ -139,7 +124,7 @@ jQuery(document).ready(function(){
 		<h2>Місця в Київраді</h2>
 	</div>
 	<div class="col-md-6">
-		<h3 class="text-center">По мажоритарному округу</h3>
+		<h3 class="text-center">За мажоритарними округами</h3>
 		<ul class="places">
 
 
@@ -249,7 +234,8 @@ where posts.post_status='publish' and posts.post_type='party' and acf.meta_key='
 $total_passed_percent=80.583; //$wpdb->get_var( $query	); // !!!! заменить на константу (пример: $passed_percent=85.5;) когда будут финальные результаты
 
 // нахождение ID партии, у которой максимальная дробная часть от 60*(party->percent/total_passed_percent)
-$query="select mod(60*(acf.meta_value / ((select sum(acf.meta_value) as total_percent from wp_posts posts
+/*
+         $query="select mod(60*(acf.meta_value / ((select sum(acf.meta_value) as total_percent from wp_posts posts
 left join wp_postmeta acf on posts.ID= acf.post_id
 where posts.post_status='publish' and posts.post_type='party' and acf.meta_key='procent' and acf.meta_value>3))),1)
 
@@ -257,8 +243,8 @@ as max_remainder, posts.id as party_id from wp_posts posts
 left join wp_postmeta acf on posts.ID= acf.post_id
 where posts.post_status='publish' and posts.post_type='party' and acf.meta_key='procent' and acf.meta_value>3
 order by max_remainder desc limit 1";
-$party_to_inc_id=$wpdb->get_var( $query,1);
-
+$party_to_inc_id=$wpdb->get_var( $query,1);*/
+$party_to_inc_id=769;
 
 		$er=3;
 
@@ -360,11 +346,6 @@ $cnt++;
 while ($cnt++<60){
 		echo "<li $common_classes></li>\n";
 }
-
-echo "<!--";
-//var_dump($winner_party_ids);
-echo "-->";
-
 
 ?>
 
