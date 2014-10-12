@@ -57,7 +57,7 @@ ul.places li a img {vertical-align: middle; vertical-align: -webkit-baseline-mid
 .final-candidates {margin-top: 10px;}
 .final-candidates h3 {margin-top: 10px;} 
 .party-heading {margin-bottom: 10px;}
-.final-candidates img {margin-bottom: 10px;}  
+.final-candidates img {margin-bottom: 10px;}
 
 ul.tmenu {list-style-type: none; padding:0 0 10px 0; font-family: "PT Serif", "Times New Roman", Georgia, Serif; border-bottom: 1px solid #5d5d5d;}
 ul.tmenu li {display: inline-block; margin-right: 25px;}
