@@ -774,7 +774,7 @@ function lm_relative_posts_by_cats() {
 <?php while( $my_query->have_posts() ): $my_query->the_post(); ?>
         <div class="col-sm-6 face-news preview front-sidebar">      
         <?php
-            $post_thumbnail_id = get_post_thumbnail_id(get_the_ID());
+            $post_thumbnail_id = get_post_thumbnail_id($post->ID);
             $post_thumbnail = wp_get_attachment_image_src($post_thumbnail_id,'thumb');
         ?>
             <div class="topnews-wrapper" style="background-image:url(<?php echo $post_thumbnail[0] ?>)">
