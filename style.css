@@ -28,6 +28,7 @@ body {
 #banner-header {
   background-color: transparent;
   border:0;
+  display:none;
 }
 
 
