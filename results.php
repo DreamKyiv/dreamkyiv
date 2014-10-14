@@ -122,8 +122,8 @@ a.main-article:hover {text-decoration: none;}
             </div>
 		</div>
 
-<div class="row bigrow">
-  <div class="col-sm-12 news-preview">
+
+<div class=row>
     <?php 
       $args = array(
         'post__not_in' => $do_not_duplicate,
@@ -131,16 +131,22 @@ a.main-article:hover {text-decoration: none;}
         'category_name' => 'kontrol-statti',
       );
       query_posts( $args );
-      while ( have_posts() ) : the_post();?>
-      
-        <div class="col-sm-3 news-item"><?php $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'thumbnail') ); ?>
-<img src="<?php echo $url ?>" class="mainpage" /><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><br><span class="el-icon-calendar icon date"><?php the_time('d.m.Y'); ?></span></div>
-      
-        
+      while ( have_posts() ) : the_post(); $url = wp_get_attachment_url( get_post_thumbnail_id($post->ID, 'thumbnail') ); ?>
+
+<div class="face-news preview front-sidebar col-sm-3">
+                    <div class="topnews-wrapper" style="background-image:url(<?=$url;?>)">
+                <!--div class="topnews-category"><ul class="post-categories">
+	<li><a href="http://dreamkyiv.com/category/dream-kyiv/" rel="category tag">Київ мрії</a></li></ul></div-->
+                    <a href="<? the_permalink();?>" class="topnews"><div class="topnews-info"><p><? the_title();?></p></div></a>
+            </div>
+    </div>
       <?php endwhile;
 
         wp_reset_query();
     ?>
+
+</div>
+
    <div class="col-sm-12 text-center all-news">
     <a href="<?php echo home_url('/category/kontrol-statti/') ?>" class="main">ВСІ НОВИНИ</a>
    </div>
