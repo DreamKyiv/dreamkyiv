@@ -17,19 +17,36 @@ ul.control-menu {
     z-index: 1000;
     float: left;
     min-width: 160px;
+    width: 100%;
     padding: 5px;
     margin: 2px 0 0;
   /*  list-style: none;*/
     font-size: 14px;
-    background-color: #fff;
-    border: 1px solid #c4c4c4;
-    border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 4px;
     -webkit-box-shadow: 0 6px 12px rgba(0,0,0,0.175);
     box-shadow: 0 6px 12px rgba(0,0,0,0.175);
     background-clip: padding-box;
     display: block;
+background-color: #eee;
+border-radius: 4px;
+border: 1px solid;
+border-color: #e5e5e5;
+overflow: hidden;
 }
+ul.control-menu > li {
+padding-bottom: 5px;	
+}
+ul.control-menu > li > a {
+color: black;
+}
+.control-menu-row {
+position: relative;
+}
+.control-menu-div {
+position: absolute;
+bottom: 13px;
+right: 0;
+}
+
 span.distr {
 color: #000;
 background: #FFF;
@@ -102,7 +119,7 @@ a.main-article:hover {text-decoration: none;}
 </style>
 
 
-		<div class="row">
+		<div class="row control-menu-row">
 			<div class="col-sm-9">
 				<h2 class="form-heading">Хто мій депутат у Київраді?</h2>
 				<form role="form" class="form-horizontal">
@@ -113,7 +130,7 @@ a.main-article:hover {text-decoration: none;}
 					</div>
 				</form>
 			</div>
-            <div class="col-sm-3">
+            <div class="col-sm-3 control-menu-div">
                 <ul class="control-menu">
                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8803 menu-mazhorytarni-okrugy"><a title="Мажоритарні округи" href="http://dreamkyiv.com/vibori/viborchi-okrugi/">Мажоритарні округи</a></li>
                     <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-9766 menu-partijni-spysky"><a title="Партійні списки" href="http://dreamkyiv.com/vibori/partiyi/">Партійні списки</a></li>

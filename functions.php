@@ -47,7 +47,7 @@ require_once locate_template( 'lib/admin-options.php' );
  * Add a less file from our child theme to the parent theme's compiler.
  * This uses the 'shoestrap_compiler' filter that exists in the shoestrap compiler
  */
-//add_filter( 'shoestrap_compiler', 'shoestrap_child_styles' );
+add_filter( 'shoestrap_compiler', 'shoestrap_child_styles' );
 function shoestrap_child_styles( $bootstrap ) {
 	return $bootstrap . '
 	@import "' . get_stylesheet_directory() . '/assets/less/child.less";';
