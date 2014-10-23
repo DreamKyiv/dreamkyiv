@@ -60,7 +60,8 @@ while ( have_posts() ) : the_post();
 		echo '</div>';
 		
 		echo '<footer>';
-			
+			setPostViews(get_the_ID());
+			echo getPostViews(get_the_ID());
 		echo '</footer>';
 		
 		lm_relative_posts_by_cats();
