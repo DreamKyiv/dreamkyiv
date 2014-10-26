@@ -22,6 +22,7 @@
 	<link rel="alternate" type="application/rss+xml" title="<?php echo get_bloginfo('name'); ?> Feed" href="<?php echo esc_url(get_feed_link()); ?>">
 	<style>
 	.ui-autocomplete-loading {background: url('/img/loading.gif') 99% center no-repeat!important;}
+	@import "mobile.css" handheld;
 	</style>
     <?php if ( !is_user_logged_in() ){ ?>
     <style>
