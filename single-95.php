@@ -46,7 +46,7 @@ if( array_key_exists('response', $_GET) &&  $_GET['response'] == 'fu-sent' ) {
 
 $is_vinner=(get_field('победитель')=='1'); 
 //if (is_user_logged_in() && get_current_user_id()==71){
-if (is_vinner) {
+if ($is_vinner) {
 $this_candidate_ID=get_the_ID();
 ?>
 <div class="row candidate-all">
